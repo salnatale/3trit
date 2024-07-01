@@ -18,6 +18,7 @@ const OG_TRIT_MAPPING = {
 };
 
 const PRESS_THRESHOLD = 250;
+const SPACE_THRESHOLD = 5000;
 let tritState = ['0', '0', '0'];
 let startTime = {};
 let timeoutIds = {};
@@ -62,6 +63,11 @@ document.addEventListener('keyup', (event) => {
     if (event.key === '1' || event.key === '2' || event.key === '3') {
         clearTimeout(timeoutIds[event.key]); // Clear timeout to prevent switching to long-press
         const duration = new Date().getTime() - startTime[event.key]; // Calculate duration of key press
+        if (duration > SPACE_THRESHOLD) {
+            handleSpace();
+            return;
+        }
+
         const trit = determineTritState(duration); // Determine trit based on press duration
         const index = parseInt(event.key) - 1; // Map key to trit index
         tritState[index] = trit; // Update trit state
@@ -141,7 +147,11 @@ function handleBackspace() {
     const currentText = translationDisplay.innerText;
     translationDisplay.innerText = currentText.slice(0, -1); // Remove last character from output
 }
-1
+function handleSpace() {
+    translationDisplay.innerText += ' '; // Append space to output
+    tritState = ['0', '0', '0']; // Reset trit state
+    updateTritDisplay();
+}
 
 function highlightTranslatedLetter(tritCombination) {
     const cells = mappingTable.getElementsByTagName('td');
