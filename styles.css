@@ -29,12 +29,12 @@ button {
 }
 
 button.short-press {
-    background-color: #007BFF;
+    background-color: #4da3ff;
     color: white;
 }
 
 button.long-press {
-    background-color: #0056b3;
+    background-color: #003f82;
     color: white;
 }
 
