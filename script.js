@@ -1,3 +1,4 @@
+// new mapping from frequency encoding json 
 const TRIT_MAPPING = {
     '001': 'E', '002': 'H', '010': 'T', '011': 'O',
     '012': 'W', '020': 'R', '021': 'F', '022': 'L', '100': 'A',
@@ -6,6 +7,7 @@ const TRIT_MAPPING = {
     '202': 'U', '210': 'B', '211': 'Z', '212': 'X', '220': 'C',
     '221': 'K', '222': 'M',
 };
+// keep old trit mapping for reference
 const OG_TRIT_MAPPING = {
     '001': 'A', '002': 'B', '010': 'C', '011': 'D',
     '012': 'E', '020': 'F', '021': 'G', '022': 'H', '100': 'I',
@@ -120,6 +122,7 @@ function update_cpm(){
 
 function translateTritCombination() {
     const tritCombination = tritState.join(''); // Join trit states to form combination
+
     const translation = TRIT_MAPPING[tritCombination] || '?'; // Translate trit combination to English
     console.log(`Trit combination: ${tritCombination}, translated to: ${translation}`);
     const outputDiv = document.getElementById('translatedOutput');
