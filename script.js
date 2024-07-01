@@ -17,8 +17,10 @@ const OG_TRIT_MAPPING = {
     '221': 'Y', '222': 'Z',
 };
 
-const PRESS_THRESHOLD = 250;
-const SPACE_THRESHOLD = 5000;
+
+
+const PRESS_THRESHOLD = 250; // Threshold to differentiate between short and long key presses
+
 let tritState = ['0', '0', '0'];
 let startTime = {};
 let timeoutIds = {};
@@ -32,6 +34,15 @@ const keyButtons = {
 };
 const translateTritCombination_called_dict = {'call_times':[], 'num_calls': 0};  
 
+// build slider
+const thresholdSlider = document.getElementById('thresholdSlider');
+const thresholdValue = document.getElementById('thresholdValue');
+
+// Update PRESS_THRESHOLD when the slider value changes
+thresholdSlider.addEventListener('input', function () {
+    PRESS_THRESHOLD = parseInt(this.value, 10);
+    thresholdValue.innerText = this.value;
+});
 
 
 

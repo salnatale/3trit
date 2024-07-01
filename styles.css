@@ -118,3 +118,7 @@ td {
     flex-direction: column;
     gap: 20px;
 }
+
+.slider-container {
+    margin-bottom: 20px;
+}
