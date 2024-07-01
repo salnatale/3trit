@@ -76,10 +76,10 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
-function getSortedTritMapping(mapping, old_mapping) {
+function getSortedTritMapping(mapping) {
     // Convert object to array of entries
     const entries = Object.entries(mapping);
-    // Sort the array by the keys (first element of each entry)
+    // Sort the array by the keys (first element of each entry). 
     entries.sort((a, b) => a[1].localeCompare(b[1]));
     
     return entries;
